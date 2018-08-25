@@ -1,40 +1,36 @@
 import React from "react";
 import { saveAs } from "file-saver";
+import RichEditor from "./editor";
+import { stateToHTML } from "draft-js-export-html";
 
 export default class App extends React.Component {
   state = {
-    area: undefined
+    content: ""
   };
 
-  bkk = () => {
-    var str = this.state.area;
-
-    if (str === undefined || str === "") {
-      alert("Dude, you can't do this, write first, then save!!");
+  finalSave = () => {
+    var str = this.state.content;
+    if ((str === "") | (str === "<p><br></p>")) {
+      alert("Dude, you cant do this, write first and then save!!");
     } else {
-      var res = str.substr(0, 10);
-      var file = new File([str], res + ".txt", {
+      var res = Math.floor(Math.random() * 100 + 1);
+      var file = new File([str], res + ".html", {
         type: "text/plain;charset=utf-8"
       });
       saveAs(file);
     }
-    console.log(str)
   };
 
-  change = e => {
-    this.setState({ area: e.target.value });
+  onChange = editorState => {
+    var prsd = stateToHTML(editorState.getCurrentContent());
+    this.setState({ content: prsd });
+    console.log(prsd);
   };
 
   render() {
     return (
       <div>
-        <textarea
-          autoFocus
-          placeholder="Start writing nowwwww........"
-          value={this.state.area}
-          onChange={this.change}
-        />
-        <button onClick={this.bkk}>save</button>
+        <RichEditor save={this.finalSave} statetoParent={this.onChange} />
       </div>
     );
   }

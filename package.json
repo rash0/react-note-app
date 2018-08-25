@@ -1,9 +1,11 @@
 {
   "name": "react-note-app",
-  "version": "1.0.0",
-  "description": "📋 Simple react note app with client-side file saving.",
+  "version": "2.0.0",
+  "description": "📋 Simple react note app made with draft js and client-side file saving.",
   "keywords": [
     "note",
+    "draft-js",
+    "draft-js-export-html",
     "save",
     "client-side",
     "text",
@@ -11,6 +13,8 @@
   ],
   "main": "src/index.js",
   "dependencies": {
+    "draft-js": "^0.10.5",
+    "draft-js-export-html": "^1.2.0",
     "file-saver": "^1.3.8",
     "gh-pages": "^1.2.0",
     "react": "16.4.2",
