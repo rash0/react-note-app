@@ -1,6 +1,5 @@
 import React from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
 
 class RichEditor extends React.Component {
   state = { editorState: EditorState.createEmpty() };
