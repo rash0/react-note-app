@@ -60,7 +60,7 @@ class RichEditor extends React.Component {
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}
             onTab={this.onTab}
-            placeholder="write bbi write..."
+            placeholder="Start writinggg..."
             ref="editor"
             spellCheck={true}
           />
